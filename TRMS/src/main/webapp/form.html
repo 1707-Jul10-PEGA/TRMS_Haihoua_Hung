@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+
+</head>
+<body>
+	<form action="Request" id="e_form" class=.form-group >
+		<div class="form-group">
+			<label for="fname">First Name:		</label>
+			<input type="text" id="e_fname" name="fname" placeholder="First Name..."></input>
+		</div>
+		
+		<div class="form-group">
+			<label for="lname">Last Name:		</label>
+			<input type="text" id="e_lname" name="lname" placeholder="Last Name"></input>	
+		</div>
+		
+		<div class="form-group">
+			<label for="date">Event Date:	</label>
+			<input type="datetime-local" id="e_date" name="date"/>
+		</div>
+		
+		<!-- <div class="form-group">
+			<label for="time">Event Time:	</label>
+			<input type="time" id="e_time" name="time"/>
+		</div> -->
+		
+		<div class="form-group">
+			<label for="location">Event location:	</label>
+			<input type="text" id="e_location" name="location"></input>
+		</div>
+		
+		<div class="form-group">
+			<label for="description">Event Description:	</label>
+		
+			<textarea id="e_descrp" name="descr" rows="10" cols="30" placeholder="Description..."></textarea>
+		</div>
+		<div class="form-group">
+			<label for="cost">Event Cost:	</label>
+			<input type="number" id="e_cost" name="cost"></input>
+		</div>
+		<div class="form-group">
+			<label for="gradingformat">Grading Format:	</label>
+			<input type="text" id="e_grading" name="grading"/>
+		</div>
+		
+		<div class="form-group">
+			<label for="type">Event Type:	</label>
+			<input type="text" id="e_type" name="type"/>
+		</div>
+		
+		<div class="form-group">
+			<label for="justification">Work Related Justification:	</label>
+			<textarea id="e_work" name="justification" rows="10" cols="30" placeholder="Justification..."></textarea>
+		</div>
+		
+		<div class="form-group"> 
+    		<div class="col-sm-offset-2 col-sm-10">
+      			<button type="submit" class="btn btn-default">Submit</button>
+    		</div>
+  		</div>
+	</form>
+</body>
+</html>
