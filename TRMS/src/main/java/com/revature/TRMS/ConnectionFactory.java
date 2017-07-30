@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+//import oracle.jdbc.driver.OracleDriver;
 
 public class ConnectionFactory {
 
@@ -42,13 +43,16 @@ public class ConnectionFactory {
 		}
 
 		try {
-			conn = DriverManager.getConnection(prop.getProperty("url"), 
-					prop.getProperty("username"),
-					prop.getProperty("password"));
+	//		Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@trms.ciui1pa8mwjh.us-east-1.rds.amazonaws.com:1521:ORCL", 
+					"user1234",
+					"pass1234");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		return conn;
 
 	}

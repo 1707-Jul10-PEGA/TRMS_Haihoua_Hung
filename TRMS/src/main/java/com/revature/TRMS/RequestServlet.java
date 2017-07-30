@@ -3,9 +3,11 @@ package com.revature.TRMS;
 import java.io.IOException;
 import java.io.Writer;
 import java.sql.SQLException;
-import java.util.Date;
+import java.sql.Timestamp;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,20 +41,16 @@ public class RequestServlet extends HttpServlet {
 		String lname = request.getParameter("lname");
 		double amount = Double.parseDouble(request.getParameter("cost"));
 		
-		Date eventDate = null;
-		Date eventTime = null;
+		Timestamp eventDate = null;
 		//2010-10-10T10:10 YYYY-MM-ddTHH:mm
-		SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd'T'HH:mm");
         String dateInString = request.getParameter("date");
-        String timeInString = request.getParameter("time");
+        String[] dates = dateInString.split("T");
 
-        try {
 
-            eventDate = (Date) formatter.parse(dateInString);
+        //java.sql.Date sqlDate =new java.sql.Date(new java.util.Date().getTime());
+		response.getWriter().write("dateInString format" + dates[0] + " " + dates[1]);
+		eventDate = Timestamp.valueOf(dates[0] + " " + dates[1] + ":00.0");
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         
 		String location = request.getParameter("location");
 		String description = request.getParameter("descr");
@@ -60,7 +58,7 @@ public class RequestServlet extends HttpServlet {
 		String eventType = request.getParameter("type");
 		String justification = request.getParameter("justification");
 		
-		Request r = new Request(0, fname, lname, amount, eventDate, eventTime,
+		Request r = new Request(0, fname, lname, amount, eventDate,
 				location, description, gradingFormat, eventType, justification);
 		RequestDaoImpl r_dao = new RequestDaoImpl();
 		try {
@@ -69,9 +67,7 @@ public class RequestServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		response.getWriter().write(r.toString());
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

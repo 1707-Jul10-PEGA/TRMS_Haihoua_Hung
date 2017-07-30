@@ -17,10 +17,16 @@ public class driver {
 	
 	public static void main(String[] args) {
 		driver d = new driver();
-		d.run();
 	}
 	
-	public void run() {
+	public void run(Request r) {
+		RequestDaoImpl r_dao = new RequestDaoImpl();
+		try {
+			r_dao.saveRequest(r);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }

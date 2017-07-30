@@ -1,15 +1,16 @@
 package com.revature.TRMS;
 
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 public class Request {
 	private int requestId;
 	private String firstName;
 	private String lastName;
 	private double amount;
-	private Date eventDate;
-	private Date eventTime;
+	private Timestamp eventDate;
 	private String location;
 	private String description;
 	private String gradingFormat;
@@ -18,7 +19,7 @@ public class Request {
 	
 	
 	
-	public Request(int requestId, String firstName, String lastName, double amount, Date eventDate, Date eventTime,
+	public Request(int requestId, String firstName, String lastName, double amount, Timestamp eventDate,
 			String location, String description, String gradingFormat, String eventType, String justification) {
 		super();
 		this.requestId = requestId;
@@ -26,7 +27,6 @@ public class Request {
 		this.lastName = lastName;
 		this.amount = amount;
 		this.eventDate = eventDate;
-		this.eventTime = eventTime;
 		this.location = location;
 		this.description = description;
 		this.gradingFormat = gradingFormat;
@@ -57,17 +57,11 @@ public class Request {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public Date getEventDate() {
+	public Timestamp getEventDate() {
 		return eventDate;
 	}
-	public void setEventDate(Date eventDate) {
+	public void setEventDate(Timestamp eventDate) {
 		this.eventDate = eventDate;
-	}
-	public Date getEventTime() {
-		return eventTime;
-	}
-	public void setEventTime(Date eventTime) {
-		this.eventTime = eventTime;
 	}
 	public String getLocation() {
 		return location;
@@ -102,7 +96,7 @@ public class Request {
 	@Override
 	public String toString() {
 		return "Request [requestId=" + requestId + ", firstName=" + firstName + ", lastName=" + lastName + ", amount="
-				+ amount + ", eventDate=" + eventDate + ", eventTime=" + eventTime + ", location=" + location
+				+ amount + ", eventDate=" + eventDate + ", eventTime="  + ", location=" + location
 				+ ", description=" + description + ", gradingFormat=" + gradingFormat + ", eventType=" + eventType
 				+ ", justification=" + justification + "]";
 	}
@@ -115,7 +109,6 @@ public class Request {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((eventDate == null) ? 0 : eventDate.hashCode());
-		result = prime * result + ((eventTime == null) ? 0 : eventTime.hashCode());
 		result = prime * result + ((eventType == null) ? 0 : eventType.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((gradingFormat == null) ? 0 : gradingFormat.hashCode());
@@ -145,11 +138,6 @@ public class Request {
 			if (other.eventDate != null)
 				return false;
 		} else if (!eventDate.equals(other.eventDate))
-			return false;
-		if (eventTime == null) {
-			if (other.eventTime != null)
-				return false;
-		} else if (!eventTime.equals(other.eventTime))
 			return false;
 		if (eventType == null) {
 			if (other.eventType != null)
