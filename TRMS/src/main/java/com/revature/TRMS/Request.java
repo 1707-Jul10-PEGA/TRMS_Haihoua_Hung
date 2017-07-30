@@ -16,11 +16,13 @@ public class Request {
 	private String gradingFormat;
 	private String eventType;
 	private String justification;
+	private int status;
+	private int employeeID;
 	
 	
 	
 	public Request(int requestId, String firstName, String lastName, double amount, Timestamp eventDate,
-			String location, String description, String gradingFormat, String eventType, String justification) {
+			String location, String description, String gradingFormat, String eventType, String justification, int status, int employeeID) {
 		super();
 		this.requestId = requestId;
 		this.firstName = firstName;
@@ -32,7 +34,18 @@ public class Request {
 		this.gradingFormat = gradingFormat;
 		this.eventType = eventType;
 		this.justification = justification;
+		this.status = status;
+		this.setEmployeeID(employeeID);
 	}
+	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public int getRequestId() {
 		return requestId;
 	}
@@ -172,6 +185,14 @@ public class Request {
 		if (requestId != other.requestId)
 			return false;
 		return true;
+	}
+
+	public int getEmployeeID() {
+		return employeeID;
+	}
+
+	public void setEmployeeID(int employeeID) {
+		this.employeeID = employeeID;
 	}
 	
 	

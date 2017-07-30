@@ -1,5 +1,6 @@
 package com.revature.TRMS;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Date;
@@ -14,6 +15,26 @@ public class RequestDaoImpl implements RequestDao {
 	public RequestDaoImpl(){
 		// TODO Auto-generated constructor stub
 	}
+	
+	public List<Request> getRequestWithStatus(int status){
+		Connection conn = ConnectionFactory.getInstance().getConnection();
+		String sql = "select * from REQUEST where status = " + status;
+		Statement s;
+		List<Request> requests = new ArrayList<Request>();
+		try {
+			s = conn.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()) {
+				//TODO Loop Through ALL
+				requests.add(new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getInt(12)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return requests;
+	}
 
 	@Override
 	public Request getRequest(int id) throws SQLException {
@@ -23,7 +44,7 @@ public class RequestDaoImpl implements RequestDao {
 		ResultSet rs = s.executeQuery(sql);
 		while(rs.next()) {
 			//TODO Get some info
-			return new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+			return new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getInt(11),rs.getInt(12));
 		}
 		
 		return null;//TODO CREATE USER WITH INFO// TODO Auto-generated method stub
@@ -32,8 +53,10 @@ public class RequestDaoImpl implements RequestDao {
 	@Override
 	public int saveRequest(Request r) throws SQLException {
 		//TODO
+		//set the request_id in the employee table first before saving request
+		
 		Connection conn = ConnectionFactory.getInstance().getConnection();
-		String sql = "insert into REQUEST values(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into REQUEST values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, r.getRequestId());
 		pstmt.setString(2, r.getFirstName());
@@ -45,6 +68,8 @@ public class RequestDaoImpl implements RequestDao {
 		pstmt.setString(8, r.getGradingFormat());
 		pstmt.setString(9, r.getEventType());
 		pstmt.setString(10, r.getJustification());
+		pstmt.setInt(11, r.getStatus());
+		pstmt.setInt(12, r.getEmployeeID());
 		return pstmt.executeUpdate();
 	}
 
@@ -65,7 +90,7 @@ public class RequestDaoImpl implements RequestDao {
 		List<Request> requests = new ArrayList<Request>();
 		while(rs.next()) {
 			//TODO Loop Through ALL
-			requests.add(new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+			requests.add(new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getInt(11),rs.getInt(12)));
 		}
 		return requests;
 	}
@@ -76,6 +101,20 @@ public class RequestDaoImpl implements RequestDao {
 		String sql = "Delete from Request where REQUESTid = " +ids;
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		return pstmt.executeUpdate();
+	}
+
+	@Override
+	public void setEmployeeRequest(int E_ID, int R_ID) {
+		Connection conn = ConnectionFactory.getInstance().getConnection();
+		String sql = "{call set_Employee_RequestID(" + E_ID + "," + R_ID + ")}";
+		try {
+			CallableStatement cstmt = conn.prepareCall(sql);
+			cstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }

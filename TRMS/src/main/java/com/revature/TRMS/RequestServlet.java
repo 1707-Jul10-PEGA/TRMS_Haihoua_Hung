@@ -39,6 +39,7 @@ public class RequestServlet extends HttpServlet {
 		response.getWriter().write(request.getParameter("date"));
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
+		int employeeID = Integer.parseInt(request.getParameter("e_id"));
 		double amount = Double.parseDouble(request.getParameter("cost"));
 		
 		Timestamp eventDate = null;
@@ -59,7 +60,7 @@ public class RequestServlet extends HttpServlet {
 		String justification = request.getParameter("justification");
 		
 		Request r = new Request(0, fname, lname, amount, eventDate,
-				location, description, gradingFormat, eventType, justification);
+				location, description, gradingFormat, eventType, justification, 1,employeeID);
 		RequestDaoImpl r_dao = new RequestDaoImpl();
 		try {
 			r_dao.saveRequest(r);
