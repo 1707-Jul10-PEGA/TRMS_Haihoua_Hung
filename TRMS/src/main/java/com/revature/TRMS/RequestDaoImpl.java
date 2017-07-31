@@ -39,7 +39,7 @@ public class RequestDaoImpl implements RequestDao {
 	@Override
 	public Request getRequest(int id) throws SQLException {
 		Connection conn = ConnectionFactory.getInstance().getConnection();
-		String sql = "select * from REQUEST where RequestID = " + id;
+		String sql = "select * from REQUEST where Request_ID = \'" + id + "\'";
 		Statement s = conn.createStatement();
 		ResultSet rs = s.executeQuery(sql);
 		while(rs.next()) {
@@ -120,7 +120,7 @@ public class RequestDaoImpl implements RequestDao {
 	@Override
 	public int updateStatus(int requestID, int newStatus) throws SQLException {
 		Connection conn = ConnectionFactory.getInstance().getConnection();
-		String sql = "Update Request set status = " + newStatus + " where REQUEST_ID = " +requestID;
+		String sql = "Update Request set status = " + newStatus + " where REQUEST_ID = \'" +requestID +"\'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		return pstmt.executeUpdate();
 	}
@@ -128,7 +128,7 @@ public class RequestDaoImpl implements RequestDao {
 	@Override
 	public int updateAmount(int requestID, double newAmount) throws SQLException {
 		Connection conn = ConnectionFactory.getInstance().getConnection();
-		String sql = "Update Request set amount = " + newAmount + " where REQUEST_ID = " +requestID;
+		String sql = "Update Request set amount = " + newAmount + " where REQUEST_ID = \'" +requestID +"\'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		return pstmt.executeUpdate();
 	}

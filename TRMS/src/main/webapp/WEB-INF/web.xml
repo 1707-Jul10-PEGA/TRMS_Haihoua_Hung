@@ -79,4 +79,14 @@
     <servlet-name>SessionTrack</servlet-name>
     <url-pattern>/SessionTrack</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>logoutServlet</display-name>
+    <servlet-name>logoutServlet</servlet-name>
+    <servlet-class>com.revature.TRMS.logoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logoutServlet</servlet-name>
+    <url-pattern>/logoutServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

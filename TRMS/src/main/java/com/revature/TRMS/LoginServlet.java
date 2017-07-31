@@ -56,6 +56,7 @@ public class LoginServlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else {
+			response.getWriter().append("LoginFail ").append(request.getContextPath());
 			response.getWriter().write("loginFail");
 			rd = request.getRequestDispatcher("login.html");
 			rd.forward(request, response);
