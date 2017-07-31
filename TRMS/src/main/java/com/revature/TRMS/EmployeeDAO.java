@@ -14,5 +14,5 @@ public interface EmployeeDAO {
 	
 	int deleteEmployee(int ids) throws SQLException;
 	
-	boolean login(String username, String password) throws SQLException;
+	int login(String username, String password) throws SQLException;
 }

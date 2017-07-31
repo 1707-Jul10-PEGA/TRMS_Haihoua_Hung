@@ -64,17 +64,17 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public boolean login(String username, String password) throws SQLException {
+	public int login(String username, String password) throws SQLException {
 		Connection conn = ConnectionFactory.getInstance().getConnection();
-		String sql = "select password from Employee where username = \'" + username +"\'";
+		String sql = "select password, Employeeid from Employee where username = \'" + username +"\'";
 		Statement s = conn.createStatement();
 		ResultSet rs = s.executeQuery(sql);
 		while(rs.next()) {
 			if(rs.getString(1).equals(password)) {
-				return true;
+				return rs.getInt(2);
 			}
 		}
 		
-		return false;
+		return -1;
 	}
 }

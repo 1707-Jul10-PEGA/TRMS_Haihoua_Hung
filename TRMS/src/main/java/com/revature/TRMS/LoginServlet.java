@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginServlet
@@ -35,10 +36,11 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		EmployeeDaoImpl e_dao = new EmployeeDaoImpl();
-		boolean login = false;
+		int login = -1;
 		RequestDispatcher rd = null;
 		try {
 			login = e_dao.login(username, password);
@@ -46,8 +48,10 @@ public class LoginServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(login) {
-			response.getWriter().write("Success");
+		if(login >= 0) {
+			session.setAttribute("username", username);
+			session.setAttribute("userIDKey", login);
+			response.getWriter().write("Success: " + session.getAttribute("username") + " (" + session.getAttribute("userIDKey") + ")");
 			rd = request.getRequestDispatcher("mainmenu.html");
 			rd.forward(request, response);
 		}

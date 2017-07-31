@@ -138,23 +138,30 @@ public class Employee {
 
 	public int approve(Request r) {
 		RequestDaoImpl r_dao = new RequestDaoImpl();
-		try {
-			return r_dao.updateStatus(r.getRequestId(), getStatus()+1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(r.getStatus() == getStatus()) {
+			try {
+				return r_dao.updateStatus(r.getRequestId(), getStatus()+1);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
+		
 		return 0;
 	}
 	
 	public int deny(Request r) {
 		RequestDaoImpl r_dao = new RequestDaoImpl();
-		try {
-			return r_dao.updateStatus(r.getRequestId(), 0);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(r.getStatus() == getStatus()) {
+			try {
+				return r_dao.updateStatus(r.getRequestId(), 0);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
 		return 0;
 	}
 	

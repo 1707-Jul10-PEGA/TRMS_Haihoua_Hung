@@ -1,25 +1,22 @@
 package com.revature.TRMS;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ViewRequest
+ * Servlet implementation class approveDenyServlet
  */
-public class ViewRequest extends HttpServlet {
+public class approveDenyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewRequest() {
+    public approveDenyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,19 +26,10 @@ public class ViewRequest extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDaoImpl r_dao = new RequestDaoImpl();
-		ArrayList<Request> arr = null;
-		try {
-			arr = (ArrayList<Request>) r_dao.getAllRequest();
-			r_dao.getAllRequest();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		HttpSession session = request.getSession(true);
+		response.getWriter().write("Success: " + session.getAttribute("username") + " (" + session.getAttribute("userIDKey") + ")");
+
 		
-		response.getWriter().write("Do Something");
-		RequestDispatcher rd = request.getRequestDispatcher("viewinfo.html");
-		rd.forward(request, response);
 	}
 
 	/**

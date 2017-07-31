@@ -59,4 +59,24 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>approveDenyServlet</display-name>
+    <servlet-name>approveDenyServlet</servlet-name>
+    <servlet-class>com.revature.TRMS.approveDenyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>approveDenyServlet</servlet-name>
+    <url-pattern>/approveDeny</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SessionTrack</display-name>
+    <servlet-name>SessionTrack</servlet-name>
+    <servlet-class>com.revature.TRMS.SessionTrack</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionTrack</servlet-name>
+    <url-pattern>/SessionTrack</url-pattern>
+  </servlet-mapping>
 </web-app>
