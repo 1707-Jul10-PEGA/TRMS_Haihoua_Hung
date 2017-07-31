@@ -12,5 +12,7 @@ public interface EmployeeDAO {
 	
 	List<Employee> getAllEmployee() throws SQLException;
 	
-	int deleteEmployee(int ... ids) throws SQLException;
+	int deleteEmployee(int ids) throws SQLException;
+	
+	boolean login(String username, String password) throws SQLException;
 }

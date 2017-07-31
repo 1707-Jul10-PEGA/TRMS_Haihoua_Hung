@@ -117,4 +117,20 @@ public class RequestDaoImpl implements RequestDao {
 		
 	}
 
+	@Override
+	public int updateStatus(int requestID, int newStatus) throws SQLException {
+		Connection conn = ConnectionFactory.getInstance().getConnection();
+		String sql = "Update Request set status = " + newStatus + " where REQUEST_ID = " +requestID;
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		return pstmt.executeUpdate();
+	}
+
+	@Override
+	public int updateAmount(int requestID, double newAmount) throws SQLException {
+		Connection conn = ConnectionFactory.getInstance().getConnection();
+		String sql = "Update Request set amount = " + newAmount + " where REQUEST_ID = " +requestID;
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		return pstmt.executeUpdate();
+	}
+
 }

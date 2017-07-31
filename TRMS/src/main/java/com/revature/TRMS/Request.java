@@ -109,7 +109,7 @@ public class Request {
 	@Override
 	public String toString() {
 		return "Request [requestId=" + requestId + ", firstName=" + firstName + ", lastName=" + lastName + ", amount="
-				+ amount + ", eventDate=" + eventDate + ", eventTime="  + ", location=" + location
+				+ amount + ", eventDate=" + eventDate + ", location=" + location
 				+ ", description=" + description + ", gradingFormat=" + gradingFormat + ", eventType=" + eventType
 				+ ", justification=" + justification + "]";
 	}

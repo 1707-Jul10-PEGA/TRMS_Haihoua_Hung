@@ -29,4 +29,34 @@
     <servlet-name>RequestServlet</servlet-name>
     <url-pattern>/Request</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SignupServlet</display-name>
+    <servlet-name>SignupServlet</servlet-name>
+    <servlet-class>com.revature.TRMS.SignupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignupServlet</servlet-name>
+    <url-pattern>/Signup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewRequest</display-name>
+    <servlet-name>ViewRequest</servlet-name>
+    <servlet-class>com.revature.TRMS.ViewRequest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewRequest</servlet-name>
+    <url-pattern>/ViewRequest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.revature.TRMS.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
 </web-app>

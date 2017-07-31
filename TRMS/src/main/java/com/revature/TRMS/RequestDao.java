@@ -15,4 +15,8 @@ public interface RequestDao {
 	List<Request> getAllRequest() throws SQLException;
 	
 	int deleteRequest(int ... ids) throws SQLException;
+	
+	int updateStatus(int requestID, int newStatus) throws SQLException;
+	
+	int updateAmount(int requestID, double newAmount) throws SQLException;
 }

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
-
+	<meta charset="ISO-8859-1">
+	<title>Tuition Reimbursement Management System</title>
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources\js\jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="resources\js\form.js"></script>	
 </head>
 <body>
 	<form action="Request" id="e_form" class=.form-group >
@@ -44,7 +47,7 @@
 		</div>
 		<div class="form-group">
 			<label for="cost">Event Cost:	</label>
-			<input type="number" id="e_cost" name="cost"></input>
+			<input type="number" id="e_cost" name="cost" value=0></input>
 		</div>
 		<div class="form-group">
 			<label for="gradingformat">Grading Format:	</label>
@@ -53,12 +56,24 @@
 		
 		<div class="form-group">
 			<label for="type">Event Type:	</label>
-			<input type="text" id="e_type" name="type"/>
+			<select type="text" id="e_type" name="type">
+			  <option value="University Course">University Course</option>
+			  <option value="Seminars">Seminars</option>
+			  <option value="Certificate Preparation Classes">Certificate Preparation Classes</option>
+			  <option value="Certification">Certification</option>
+			  <option value="Technical Training">Technical Training</option>
+			  <option value="Other">Other</option>
+			</select>
 		</div>
 		
 		<div class="form-group">
 			<label for="justification">Work Related Justification:	</label>
 			<textarea id="e_work" name="justification" rows="10" cols="30" placeholder="Justification..."></textarea>
+		</div>
+		
+		<div class="form-group">
+			<label for="projected">Projected Reimbursement:	</label>
+			<input id ="projected" type="number" name="projected" value = 0 readonly>
 		</div>
 		
 		<div class="form-group"> 
@@ -67,5 +82,6 @@
     		</div>
   		</div>
 	</form>
+	
 </body>
 </html>

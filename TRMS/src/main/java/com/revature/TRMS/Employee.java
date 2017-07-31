@@ -1,21 +1,22 @@
 package com.revature.TRMS;
 
+import java.sql.SQLException;
+
 public class Employee {
 	private int ID;
 	private String firstName;
 	private String lastName;
-	private int requestID;
 	private String username;
 	private String password;
 	private String title;
+	private int status = 1;
 	
-	public Employee(int iD, String firstName, String lastName, int requestID, String username, String password,
+	public Employee(int iD, String firstName, String lastName, String username, String password,
 			String title) {
 		super();
 		ID = iD;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.requestID = requestID;
 		this.username = username;
 		this.password = password;
 		this.title = title;
@@ -43,12 +44,6 @@ public class Employee {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-	public int getRequestID() {
-		return requestID;
-	}
-	public void setRequestID(int requestID) {
-		this.requestID = requestID;
 	}
 	public String getUsername() {
 		return username;
@@ -78,7 +73,6 @@ public class Employee {
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + requestID;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -111,8 +105,6 @@ public class Employee {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (requestID != other.requestID)
-			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -129,11 +121,42 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [ID=" + ID + ", firstName=" + firstName + ", lastName=" + lastName + ", requestID=" + requestID
+		return "Employee [ID=" + ID + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", username=" + username + ", password=" + password + ", title=" + title + "]";
 	}
 	
 	
+	public int getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+
+	public int approve(Request r) {
+		RequestDaoImpl r_dao = new RequestDaoImpl();
+		try {
+			return r_dao.updateStatus(r.getRequestId(), getStatus()+1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public int deny(Request r) {
+		RequestDaoImpl r_dao = new RequestDaoImpl();
+		try {
+			return r_dao.updateStatus(r.getRequestId(), 0);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
 
 }

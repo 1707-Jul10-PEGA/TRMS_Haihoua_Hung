@@ -35,7 +35,6 @@ public class RequestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ObjectMapper om = new ObjectMapper();
 		response.getWriter().write(request.getParameter("date"));
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");

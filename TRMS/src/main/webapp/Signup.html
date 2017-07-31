@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>TRMS Signup Page</title>
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources\js\jquery-3.2.1.js"></script>
+</head>
+<body>
+	<form action="Signup" id="signup" class=.form-group method="post">
+		<div class="form-group">
+			<label for="fname">First Name:		</label>
+			<input type="text" id="e_fname" name="fname" placeholder="First Name..."></input>
+		</div>
+		
+		<div class="form-group">
+			<label for="lname">Last Name:		</label>
+			<input type="text" id="e_lname" name="lname" placeholder="Last Name"></input>	
+		</div>
+		
+		<div class="form-group">
+			<label for="employee_id">Employee ID:		</label>
+			<input type="NUMBER" id="e_id" name="e_id" placeholder="0"></input>	
+		</div>
+		
+		<div class="form-group">
+			<label for="username">Username:	</label>
+			<input type="text" id="e_username" name="username"/>
+		</div>
+		
+		
+		<div class="form-group">
+			<label for="title">Title:	</label>
+			<select type="text" id="title" name="title">
+			  <option value="Employee">Employee</option>
+			  <option value="Direct Supervisor">Direct Supervisor</option>
+			  <option value="Department Head">Department Head</option>
+			  <option value="Benefit Coordinator">Benefit Coordinator</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="password">Password:	</label>
+			<input type="password" id="e_password" name="password"></input>
+		</div>
+		<div class="form-group"> 
+    		<div class="col-sm-offset-2 col-sm-10">
+      			<button type="submit" class="btn btn-default">Submit</button>
+    		</div>
+  		</div>
+	</form>
+</body>
+</html>
