@@ -14,8 +14,6 @@ function viewInfo()
 }
 function handleEvent(){
 	
-	//var head = document.getElementById("head");
-	
 	var xhr = new XMLHttpRequest();
 	
 	xhr.open("GET", "ViewRequest", true);

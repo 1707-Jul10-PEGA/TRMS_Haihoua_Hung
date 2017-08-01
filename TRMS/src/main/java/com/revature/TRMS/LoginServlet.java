@@ -61,7 +61,17 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("supervisor", e.getSupervisor());
 				session.setAttribute("e_status", e.getStatus());
 				response.getWriter().write("Success: " + session.getAttribute("username") + " (" + session.getAttribute("userIDKey") + ")");
+				/*
 				rd = request.getRequestDispatcher("mainmenu.html");
+				rd.forward(request, response);
+				*/
+				if(session.getAttribute("title").equals("Employee")){
+					rd = request.getRequestDispatcher("mainmenu.html");
+					}
+				else if(session.getAttribute("title").equals("Direct Supervisor"))
+				{
+					rd = request.getRequestDispatcher("mainmenuds.html");
+				}
 				rd.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();

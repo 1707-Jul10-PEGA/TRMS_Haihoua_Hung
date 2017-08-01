@@ -142,7 +142,7 @@ drop trigger after_employee_insert;
 /*
 INSERT INTO EMPLOYEE VALUES(1,'Adam','Smith','smitha1','smith123','Department Head',null,'IT');
 */
-
+update request set pass_grade = 80 where request_id = 3;
 
 
 

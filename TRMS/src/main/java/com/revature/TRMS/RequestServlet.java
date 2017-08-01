@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -104,7 +105,7 @@ public class RequestServlet extends HttpServlet {
 				String justification = request.getParameter("justification");
 				String path = null;
 				int passing_grade = -1;
-				if(gradingFormat.equalsIgnoreCase("other")) {
+				if(gradingFormat.equalsIgnoreCase("3")) {
 					passing_grade = Integer.parseInt(request.getParameter("grading_other"));
 				}
 				
@@ -118,6 +119,8 @@ public class RequestServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 				response.getWriter().write(r.toString());
+				RequestDispatcher rd = request.getRequestDispatcher("viewRequest");
+				rd.forward(request, response);
 	}
 
 }
