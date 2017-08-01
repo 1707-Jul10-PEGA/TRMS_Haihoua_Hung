@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="resources\js\form.js"></script>	
 </head>
 <body>
-	<form action="Request" id="e_form" class=.form-group >
+	<form action="Request" id="e_form" class=.form-group method="post" > <!--enctype="multipart/form-data">-->
 		<div class="form-group">
 			<label for="fname">First Name:		</label>
 			<input type="text" id="e_fname" name="fname" placeholder="First Name..."></input>
@@ -42,8 +42,8 @@
 		
 		<div class="form-group">
 			<label for="description">Event Description:	</label>
-		
-			<textarea id="e_descrp" name="descr" rows="10" cols="30" placeholder="Description..."></textarea>
+			<br>
+			<textarea id="e_descrp" name="descr" rows="5" cols="60" placeholder="Description..."></textarea>
 		</div>
 		<div class="form-group">
 			<label for="cost">Event Cost:	</label>
@@ -51,7 +51,13 @@
 		</div>
 		<div class="form-group">
 			<label for="gradingformat">Grading Format:	</label>
-			<input type="text" id="e_grading" name="grading"/>
+			<br>
+			<input type="radio" id="e_grading" name="grading" value="1">Presentation to Management after completion</input>
+			<br>
+			<input type="radio" id="e_grading" name="grading" value="2">Default grade of 80</input>
+			<br>
+			<input type="radio" id="e_grading" name="grading" value="3">Other</input>
+			<input type="number" placeholder=80 id="e_g_other" name="grading_other"/>
 		</div>
 		
 		<div class="form-group">
@@ -68,13 +74,22 @@
 		
 		<div class="form-group">
 			<label for="justification">Work Related Justification:	</label>
-			<textarea id="e_work" name="justification" rows="10" cols="30" placeholder="Justification..."></textarea>
+			<br>
+			<textarea id="e_work" name="justification" rows="5" cols="60" placeholder="Justification..."></textarea>
 		</div>
+		
+
 		
 		<div class="form-group">
 			<label for="projected">Projected Reimbursement:	</label>
 			<input id ="projected" type="number" name="projected" value = 0 readonly>
 		</div>
+		
+<!-- 	<div class="form-group">
+			<label for="attach">Attach Related File	</label>
+			<input id="fileupload" name="myfile" type="file" />
+		</div> -->
+		
 		
 		<div class="form-group"> 
     		<div class="col-sm-offset-2 col-sm-10">

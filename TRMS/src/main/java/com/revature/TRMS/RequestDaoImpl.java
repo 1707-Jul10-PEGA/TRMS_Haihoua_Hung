@@ -26,7 +26,7 @@ public class RequestDaoImpl implements RequestDao {
 			ResultSet rs = s.executeQuery(sql);
 			while(rs.next()) {
 				//TODO Loop Through ALL
-				requests.add(new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getInt(12)));
+				requests.add(new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getInt(12), rs.getString(13), rs.getInt(14)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -44,7 +44,7 @@ public class RequestDaoImpl implements RequestDao {
 		ResultSet rs = s.executeQuery(sql);
 		while(rs.next()) {
 			//TODO Get some info
-			return new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getInt(11),rs.getInt(12));
+			return new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getInt(11),rs.getInt(12), rs.getString(13), rs.getInt(14));
 		}
 		
 		return null;//TODO CREATE USER WITH INFO// TODO Auto-generated method stub
@@ -56,7 +56,7 @@ public class RequestDaoImpl implements RequestDao {
 		//set the request_id in the employee table first before saving request
 		
 		Connection conn = ConnectionFactory.getInstance().getConnection();
-		String sql = "insert into REQUEST values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into REQUEST values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, r.getRequestId());
 		pstmt.setString(2, r.getFirstName());
@@ -70,6 +70,12 @@ public class RequestDaoImpl implements RequestDao {
 		pstmt.setString(10, r.getJustification());
 		pstmt.setInt(11, r.getStatus());
 		pstmt.setInt(12, r.getEmployeeID());
+		pstmt.setString(13, r.getPath());
+		pstmt.setInt(14,r.getPassing_grade());
+		pstmt.setObject(15, null);
+		pstmt.setObject(16, null);
+		pstmt.setObject(17, null);
+		pstmt.setObject(18, null);
 		return pstmt.executeUpdate();
 	}
 
@@ -90,7 +96,7 @@ public class RequestDaoImpl implements RequestDao {
 		List<Request> requests = new ArrayList<Request>();
 		while(rs.next()) {
 			//TODO Loop Through ALL
-			requests.add(new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getInt(11),rs.getInt(12)));
+			requests.add(new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getInt(11),rs.getInt(12), rs.getString(13), rs.getInt(14)));
 		}
 		return requests;
 	}

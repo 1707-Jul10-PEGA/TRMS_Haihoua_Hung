@@ -18,11 +18,16 @@ public class Request {
 	private String justification;
 	private int status;
 	private int employeeID;
-	
-	
+	private String path;
+	private int passing_grade;
+	private int grade = -1;
+	private int approval1 = -1;
+	private int approval2 =-1;
+	private int approval3 = -1;
 	
 	public Request(int requestId, String firstName, String lastName, double amount, Timestamp eventDate,
-			String location, String description, String gradingFormat, String eventType, String justification, int status, int employeeID) {
+			String location, String description, String gradingFormat, String eventType, String justification,
+			int status, int employeeID, String path, int passing_grade) {
 		super();
 		this.requestId = requestId;
 		this.firstName = firstName;
@@ -35,9 +40,91 @@ public class Request {
 		this.eventType = eventType;
 		this.justification = justification;
 		this.status = status;
-		this.setEmployeeID(employeeID);
+		this.employeeID = employeeID;
+		this.path = path;
+		this.passing_grade = passing_grade;
 	}
-	
+
+	public int getRequestId() {
+		return requestId;
+	}
+
+	public void setRequestId(int requestId) {
+		this.requestId = requestId;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public Timestamp getEventDate() {
+		return eventDate;
+	}
+
+	public void setEventDate(Timestamp eventDate) {
+		this.eventDate = eventDate;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getGradingFormat() {
+		return gradingFormat;
+	}
+
+	public void setGradingFormat(String gradingFormat) {
+		this.gradingFormat = gradingFormat;
+	}
+
+	public String getEventType() {
+		return eventType;
+	}
+
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
+	}
+
+	public String getJustification() {
+		return justification;
+	}
+
+	public void setJustification(String justification) {
+		this.justification = justification;
+	}
+
 	public int getStatus() {
 		return status;
 	}
@@ -46,73 +133,62 @@ public class Request {
 		this.status = status;
 	}
 
-	public int getRequestId() {
-		return requestId;
+	public int getEmployeeID() {
+		return employeeID;
 	}
-	public void setRequestId(int requestId) {
-		this.requestId = requestId;
+
+	public void setEmployeeID(int employeeID) {
+		this.employeeID = employeeID;
 	}
-	public String getFirstName() {
-		return firstName;
+
+	public String getPath() {
+		return path;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+	public void setPath(String path) {
+		this.path = path;
 	}
-	public String getLastName() {
-		return lastName;
+
+	public int getPassing_grade() {
+		return passing_grade;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+
+	public void setPassing_grade(int passing_grade) {
+		this.passing_grade = passing_grade;
 	}
-	public double getAmount() {
-		return amount;
+
+	public int getGrade() {
+		return grade;
 	}
-	public void setAmount(double amount) {
-		this.amount = amount;
+
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
-	public Timestamp getEventDate() {
-		return eventDate;
+
+	public int getApproval1() {
+		return approval1;
 	}
-	public void setEventDate(Timestamp eventDate) {
-		this.eventDate = eventDate;
+
+	public void setApproval1(int approval1) {
+		this.approval1 = approval1;
 	}
-	public String getLocation() {
-		return location;
+
+	public int getApproval2() {
+		return approval2;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+
+	public void setApproval2(int approval2) {
+		this.approval2 = approval2;
 	}
-	public String getDescription() {
-		return description;
+
+	public int getApproval3() {
+		return approval3;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setApproval3(int approval3) {
+		this.approval3 = approval3;
 	}
-	public String getGradingFormat() {
-		return gradingFormat;
-	}
-	public void setGradingFormat(String gradingFormat) {
-		this.gradingFormat = gradingFormat;
-	}
-	public String getEventType() {
-		return eventType;
-	}
-	public void setEventType(String eventType) {
-		this.eventType = eventType;
-	}
-	public String getJustification() {
-		return justification;
-	}
-	public void setJustification(String justification) {
-		this.justification = justification;
-	}
-	@Override
-	public String toString() {
-		return "Request [requestId=" + requestId + ", firstName=" + firstName + ", lastName=" + lastName + ", amount="
-				+ amount + ", eventDate=" + eventDate + ", location=" + location
-				+ ", description=" + description + ", gradingFormat=" + gradingFormat + ", eventType=" + eventType
-				+ ", justification=" + justification + "]";
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -120,17 +196,26 @@ public class Request {
 		long temp;
 		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + approval1;
+		result = prime * result + approval2;
+		result = prime * result + approval3;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + employeeID;
 		result = prime * result + ((eventDate == null) ? 0 : eventDate.hashCode());
 		result = prime * result + ((eventType == null) ? 0 : eventType.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + grade;
 		result = prime * result + ((gradingFormat == null) ? 0 : gradingFormat.hashCode());
 		result = prime * result + ((justification == null) ? 0 : justification.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
+		result = prime * result + passing_grade;
+		result = prime * result + ((path == null) ? 0 : path.hashCode());
 		result = prime * result + requestId;
+		result = prime * result + status;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -142,10 +227,18 @@ public class Request {
 		Request other = (Request) obj;
 		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
 			return false;
+		if (approval1 != other.approval1)
+			return false;
+		if (approval2 != other.approval2)
+			return false;
+		if (approval3 != other.approval3)
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
+			return false;
+		if (employeeID != other.employeeID)
 			return false;
 		if (eventDate == null) {
 			if (other.eventDate != null)
@@ -161,6 +254,8 @@ public class Request {
 			if (other.firstName != null)
 				return false;
 		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (grade != other.grade)
 			return false;
 		if (gradingFormat == null) {
 			if (other.gradingFormat != null)
@@ -182,19 +277,31 @@ public class Request {
 				return false;
 		} else if (!location.equals(other.location))
 			return false;
+		if (passing_grade != other.passing_grade)
+			return false;
+		if (path == null) {
+			if (other.path != null)
+				return false;
+		} else if (!path.equals(other.path))
+			return false;
 		if (requestId != other.requestId)
+			return false;
+		if (status != other.status)
 			return false;
 		return true;
 	}
 
-	public int getEmployeeID() {
-		return employeeID;
+	@Override
+	public String toString() {
+		return "Request [requestId=" + requestId + ", firstName=" + firstName + ", lastName=" + lastName + ", amount="
+				+ amount + ", eventDate=" + eventDate + ", location=" + location + ", description=" + description
+				+ ", gradingFormat=" + gradingFormat + ", eventType=" + eventType + ", justification=" + justification
+				+ ", status=" + status + ", employeeID=" + employeeID + ", path=" + path + ", passing_grade="
+				+ passing_grade + ", grade=" + grade + ", approval1=" + approval1 + ", approval2=" + approval2
+				+ ", approval3=" + approval3 + "]";
 	}
+	
+	
 
-	public void setEmployeeID(int employeeID) {
-		this.employeeID = employeeID;
-	}
-	
-	
 	
 }

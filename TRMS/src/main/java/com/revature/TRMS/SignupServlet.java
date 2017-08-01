@@ -3,6 +3,7 @@ package com.revature.TRMS;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,14 +47,17 @@ public class SignupServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String title = request.getParameter("title");
+		int supervisor = Integer.parseInt(request.getParameter("supervisor"));
+		String department = request.getParameter("department");
 		EmployeeDaoImpl e_dao = new EmployeeDaoImpl();
 		try {
-			e_dao.saveEmployee(new Employee(employeeID,fname,lname,username,password,title));
+			e_dao.saveEmployee(new Employee(employeeID,fname,lname,username,password,title,supervisor,department));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.getWriter().write("User: " + fname + " " + lname + " " + employeeID + " " + username + " " + password);
+		RequestDispatcher rd = request.getRequestDispatcher("login.html");
+		rd.forward(request, response);
 		
 	}
 

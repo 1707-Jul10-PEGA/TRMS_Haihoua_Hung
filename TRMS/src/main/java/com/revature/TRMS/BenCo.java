@@ -3,10 +3,10 @@ package com.revature.TRMS;
 import java.sql.SQLException;
 
 public class BenCo extends Employee{
-	private int status = 4;
+	private int status = 3;
 	public BenCo(int iD, String firstName, String lastName, String username, String password,
-			String title) {
-		super(iD, firstName, lastName, username, password, title);
+			String title, int supervisor, String department) {
+		super(iD, firstName, lastName, username, password,title,supervisor,department);
 	}
 	
 	public int adjustAmount(Request r, double amount) {

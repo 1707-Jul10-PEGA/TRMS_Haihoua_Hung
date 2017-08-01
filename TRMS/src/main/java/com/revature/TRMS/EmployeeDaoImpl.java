@@ -18,16 +18,16 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		Statement s = conn.createStatement();
 		ResultSet rs = s.executeQuery(sql);
 		while(rs.next()) {
-			return new Employee(id,rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));
+			//rs.getInt(8) will return 0 if the value in database is null : supervisor
+			return new Employee(id,rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), rs.getInt(7), rs.getString(8));
 		}
 		
-		return null;//TODO CREATE USER WITH INFO
+		return null;
 	}
 
 	public int saveEmployee(Employee e) throws SQLException {
-		// TODO Auto-generated method stub
 		Connection conn = ConnectionFactory.getInstance().getConnection();
-		String sql = "insert into EMPLOYEE values(?,?,?,?,?,?)";
+		String sql = "insert into EMPLOYEE values(?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, e.getID());
 		pstmt.setString(2, e.getFirstName());
@@ -35,6 +35,14 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		pstmt.setString(4, e.getUsername());
 		pstmt.setString(5, e.getPassword());
 		pstmt.setString(6, e.getTitle());
+		if(e.getSupervisor() <= 0) {
+			pstmt.setObject(7, null);
+		}
+		else {
+			pstmt.setInt(7, e.getSupervisor());
+		}
+		
+		pstmt.setString(8, e.getDepartment());
 		return pstmt.executeUpdate();
 	}
 	
@@ -51,7 +59,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 		ResultSet rs = s.executeQuery(sql);
 		List<Employee> list = new ArrayList<Employee>();
 		while(rs.next()) {
-			list.add(new Employee(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)));
+			list.add(new Employee(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), rs.getInt(7), rs.getString(8)));
 		}
 		return list;
 	}

@@ -49,11 +49,24 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if(login >= 0) {
-			session.setAttribute("username", username);
-			session.setAttribute("userIDKey", login);
-			response.getWriter().write("Success: " + session.getAttribute("username") + " (" + session.getAttribute("userIDKey") + ")");
-			rd = request.getRequestDispatcher("mainmenu.html");
-			rd.forward(request, response);
+			try {
+				Employee e = e_dao.getEmployee(login);
+				
+				session.setAttribute("username", e.getUsername());
+				session.setAttribute("userIDKey", login);
+				session.setAttribute("title", e.getTitle());
+				session.setAttribute("fname", e.getFirstName());
+				session.setAttribute("lname", e.getLastName());
+				session.setAttribute("department", e.getDepartment());
+				session.setAttribute("supervisor", e.getSupervisor());
+				session.setAttribute("e_status", e.getStatus());
+				response.getWriter().write("Success: " + session.getAttribute("username") + " (" + session.getAttribute("userIDKey") + ")");
+				rd = request.getRequestDispatcher("mainmenu.html");
+				rd.forward(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 		}
 		else {
 			response.getWriter().append("LoginFail ").append(request.getContextPath());
