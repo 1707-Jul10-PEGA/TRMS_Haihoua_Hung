@@ -1,23 +1,25 @@
 package com.revature.TRMS;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class logoutServlet
+ * Servlet implementation class cancelServlet
  */
-public class logoutServlet extends HttpServlet {
+public class cancelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public logoutServlet() {
+    public cancelServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,13 +28,18 @@ public class logoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		request.getSession().invalidate();
-		request.getSession(false);
-		response.getWriter().append("Served get at: ").append(request.getContextPath());
-		RequestDispatcher rd = request.getRequestDispatcher("login.html");
-		rd.forward(request, response);
+		HttpSession session = request.getSession(true);
+		int id = Integer.parseInt(session.getAttribute("userIDKey").toString());
+		int request_id = Integer.parseInt(request.getParameter("request").toString());
+		RequestDaoImpl r_dao = new RequestDaoImpl();
+		try {
+			r_dao.deleteRequest(request_id);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//RequestDispatcher rd = request.getRequestDispatcher("viewRequest");
+		//rd.forward(request, response);
 	}
 
 	/**
@@ -40,8 +47,7 @@ public class logoutServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served post at: ").append(request.getContextPath());
-
+		doGet(request, response);
 	}
 
 }

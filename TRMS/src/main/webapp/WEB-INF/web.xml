@@ -9,6 +9,9 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
   <servlet>
     <description></description>
     <display-name>EmployeeServlet</display-name>
@@ -77,6 +80,26 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>logoutServlet</servlet-name>
-    <url-pattern>/logoutServlet</url-pattern>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewRequestds</display-name>
+    <servlet-name>ViewRequestds</servlet-name>
+    <servlet-class>com.revature.TRMS.ViewRequestds</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewRequestds</servlet-name>
+    <url-pattern>/ViewRequestds</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>cancelServlet</display-name>
+    <servlet-name>cancelServlet</servlet-name>
+    <servlet-class>com.revature.TRMS.cancelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cancelServlet</servlet-name>
+    <url-pattern>/cancelRequest</url-pattern>
   </servlet-mapping>
 </web-app>

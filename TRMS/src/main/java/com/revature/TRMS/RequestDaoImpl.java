@@ -102,9 +102,9 @@ public class RequestDaoImpl implements RequestDao {
 	}
 
 	@Override
-	public int deleteRequest(int... ids) throws SQLException {
+	public int deleteRequest(int ids) throws SQLException {
 		Connection conn = ConnectionFactory.getInstance().getConnection();
-		String sql = "Delete from Request where REQUESTid = " +ids;
+		String sql = "Delete from Request where REQUEST_id = \'" +ids + "\'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		return pstmt.executeUpdate();
 	}
@@ -137,6 +137,28 @@ public class RequestDaoImpl implements RequestDao {
 		String sql = "Update Request set amount = " + newAmount + " where REQUEST_ID = \'" +requestID +"\'";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		return pstmt.executeUpdate();
+	}
+
+	@Override
+	public List<Request> getAllidRequest(int id) {
+		Connection conn = ConnectionFactory.getInstance().getConnection();
+		String sql = "select * from REQUEST where E_ID = '" + id + "'";
+		Statement s;
+		try {
+			s = conn.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			List<Request> requests = new ArrayList<Request>();
+			while(rs.next()) {
+				//TODO Loop Through ALL
+				requests.add(new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getTimestamp(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),rs.getInt(11),rs.getInt(12), rs.getString(13), rs.getInt(14)));
+			}
+			return requests;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 }

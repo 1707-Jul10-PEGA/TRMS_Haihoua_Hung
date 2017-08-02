@@ -7,15 +7,16 @@
 <body>
 <p>Welcome back! What do you want to do today?</p>
 <br>
-<input type="button" value="View my requests"/>
+<input type="button" id="myBtn" onclick="viewInfo()" value="View my requests"/>
 <br>
 <br>
-<input type="button"  value="Make a new request"/>
+<input type="button" onclick="newWindow()" value="Make a new request"/>
 <br>
 <br>
-<input type="button" value="View my employees' requests"/>
+<input type="button" id="myBtn2" onclick="viewInfoDs()" value="View my employees' requests"/>
 <br>
 <br>
-<a href="login.html" id="logoutbtn" value="Logout"><button >Logout</button></a>
+<button id="logoutbtn"><a href="logout">Logout</a></button>
+<script type="text/javascript" src="resources/js/mainmenuds.js"></script>
 </body>
 </html>

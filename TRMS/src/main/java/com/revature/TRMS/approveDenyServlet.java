@@ -29,8 +29,9 @@ public class approveDenyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
-		response.getWriter().write("Success: " + session.getAttribute("username") + " (" + session.getAttribute("userIDKey") + ")");
 		int id = Integer.parseInt(session.getAttribute("userIDKey").toString());
+		response.getWriter().write("Success: " + session.getAttribute("username") + " (" + session.getAttribute("userIDKey") + " | " + Integer.parseInt(request.getParameter("request")) +")");
+
 		int request_id = Integer.parseInt(request.getParameter("request"));
 		String action = request.getParameter("action");
 		EmployeeDaoImpl e_dao = new EmployeeDaoImpl();
