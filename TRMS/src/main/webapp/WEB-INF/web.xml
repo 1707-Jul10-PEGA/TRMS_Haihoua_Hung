@@ -102,4 +102,14 @@
     <servlet-name>cancelServlet</servlet-name>
     <url-pattern>/cancelRequest</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewRequestdh</display-name>
+    <servlet-name>ViewRequestdh</servlet-name>
+    <servlet-class>com.revature.TRMS.ViewRequestdh</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewRequestdh</servlet-name>
+    <url-pattern>/ViewRequestdh</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -48,6 +48,7 @@ public class ViewRequest extends HttpServlet {
 					+ "border-collapse: collapse;}"
 					+ "th, td {padding: 5px;text-align: left;} </style>");
 			out.println("</head>");
+			out.println("<style> body { background-image: url(blue.jpg); background-size: cover; } </style>");
 			out.println("<body>");
 			out.println("<h2>My Request:</h2>");
 			out.println("<table style=\"width:100%\">");

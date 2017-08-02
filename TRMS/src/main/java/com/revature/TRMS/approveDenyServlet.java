@@ -3,6 +3,7 @@ package com.revature.TRMS;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,8 +56,19 @@ public class approveDenyServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		RequestDispatcher rd = null;
+		if(session.getAttribute("title").equals("Employee")){
+			rd = request.getRequestDispatcher("mainmenu.html");
+			}
+		else if(session.getAttribute("title").equals("Direct Supervisor"))
+		{
+			rd = request.getRequestDispatcher("mainmenuds.html");
+		}
+		rd.forward(request, response);
 		
 	}
+		
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

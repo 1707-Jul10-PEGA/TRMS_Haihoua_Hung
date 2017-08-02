@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ViewRequestds
+ * Servlet implementation class ViewRequestdh
  */
-public class ViewRequestds extends HttpServlet {
+public class ViewRequestdh extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewRequestds() {
+    public ViewRequestdh() {
         super();
         // TODO Auto-generated constructor stub
     }

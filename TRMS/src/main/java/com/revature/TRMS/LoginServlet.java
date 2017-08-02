@@ -72,6 +72,10 @@ public class LoginServlet extends HttpServlet {
 				{
 					rd = request.getRequestDispatcher("mainmenuds.html");
 				}
+				else if(session.getAttribute("title").equals("Department Head"))
+				{
+					rd = request.getRequestDispatcher("mainmenudh.html");
+				}
 				rd.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();

@@ -4,17 +4,29 @@
 <meta charset="ISO-8859-1">
 <title>Main menu page</title>
 </head>
+<style>
+body {
+		background-image: url(blue.jpg);
+		background-size: cover;
+}
+</style>
 <body>
 <p>Welcome back! What do you want to do today?</p>
 <br>
-<input type="button" value="View my employees' requests"/>
+<!-- <input type="button" id="myBtn" onclick="viewInfo()" value="View my requests"/>
+<br>
+<br>
+<input type="button" onclick="newWindow()" value="Make a new request"/> -->
+<br>
+<br>
+<input type="button" id="myBtn2" onclick="viewInfoDh()" value="View my employees' requests"/>
 <br>
 <br>
 <button id="signupbtn"><a href="Signup.html">Add an Employee</a></button>
 
 <br>
 <br>
-<button id="logoutbtn"><a href="Logout">Logout</a></button>
-<script type="text/javascript" src="resources/js/mainmenuds.js"></script>
+<button id="logoutbtn"><a href="logout">Logout</a></button>
+<script type="text/javascript" src="resources/js/mainmenudh.js"></script>
 </body>
 </html>

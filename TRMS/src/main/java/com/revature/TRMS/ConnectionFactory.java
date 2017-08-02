@@ -36,7 +36,7 @@ public class ConnectionFactory {
 		Properties prop = new Properties();
 
 		try {
-			prop.load(new FileReader("C:\\Users\\hy150\\Desktop\\Revature\\workspace\\TRMS\\src\\main\\resources\\datasource.properties"));
+			prop.load(new FileReader("C:\\Users\\hungl\\Desktop\\trms project\\TRMS_Haihoua_Hung-master\\TRMS\\src\\main\\resources\\datasource.properties"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
