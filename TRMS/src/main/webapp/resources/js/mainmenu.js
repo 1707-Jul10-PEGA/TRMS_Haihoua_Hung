@@ -24,4 +24,5 @@ function handleEvent(){
 window.onload = function(){
 	
 	document.getElementById("myBtn").addEventListener("click", handleEvent, false);
+
 }

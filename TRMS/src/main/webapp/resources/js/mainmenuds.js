@@ -24,6 +24,10 @@ function viewInfoDs()
 {
 	window.open('http://localhost:8020/TRMS/ViewRequestds');
 }
+function signup(){
+	window.open('http://localhost:8020/TRMS/Signup.html');
+
+}
 
 function handleEvent2(){
 	

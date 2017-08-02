@@ -38,6 +38,15 @@ public class cancelServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		RequestDispatcher rd = null;
+		if(session.getAttribute("title").equals("Employee")){
+			rd = request.getRequestDispatcher("mainmenu.html");
+			}
+		else if(session.getAttribute("title").equals("Direct Supervisor"))
+		{
+			rd = request.getRequestDispatcher("mainmenuds.html");
+		}
+		rd.forward(request, response);
 		//RequestDispatcher rd = request.getRequestDispatcher("viewRequest");
 		//rd.forward(request, response);
 	}
