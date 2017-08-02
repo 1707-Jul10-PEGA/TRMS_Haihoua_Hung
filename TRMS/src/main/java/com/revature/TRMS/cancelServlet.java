@@ -30,10 +30,18 @@ public class cancelServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		int id = Integer.parseInt(session.getAttribute("userIDKey").toString());
+		String action = request.getParameter("action");
 		int request_id = Integer.parseInt(request.getParameter("request").toString());
+		int grade = Integer.parseInt(request.getParameter("grade"));
 		RequestDaoImpl r_dao = new RequestDaoImpl();
 		try {
-			r_dao.deleteRequest(request_id);
+			if(action.equalsIgnoreCase("cancel request")) {
+				r_dao.deleteRequest(request_id);
+			}
+			else {
+				r_dao.updateGrade(request_id, grade);
+			}
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

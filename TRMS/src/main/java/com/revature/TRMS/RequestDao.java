@@ -21,4 +21,5 @@ public interface RequestDao {
 	int updateAmount(int requestID, double newAmount) throws SQLException;
 
 	List<Request> getAllidRequest(int id);
+	int updateGrade(int requestID, int grade) throws SQLException;
 }

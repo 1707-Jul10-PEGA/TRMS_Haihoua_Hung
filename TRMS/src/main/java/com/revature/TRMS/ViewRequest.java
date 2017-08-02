@@ -99,7 +99,9 @@ public class ViewRequest extends HttpServlet {
 			
 			out.println("<form action=\"cancelRequest\">");
 			out.println("<div class=\"form-group\">");
-			out.println("<input id =\"cancelbtn\"  type=\"submit\" value=\"Cancel Request\">");
+			out.println("<input type=\"text\" name=\"grade\">");
+			out.println("<input id =\"uploadbtn\"  type=\"submit\" value=\"Upload Grade\" name=\"action\">");
+			out.println("<input id =\"cancelbtn\"  type=\"submit\" value=\"Cancel Request\" name=\"action\">");
 			out.println("</div>");
 			out.println("<input type=\"hidden\" name=\"request\" value=\"" + arr.get(0).getRequestId() +"\">");
 			out.println("</form>");

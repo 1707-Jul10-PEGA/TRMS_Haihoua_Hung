@@ -138,6 +138,14 @@ public class RequestDaoImpl implements RequestDao {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		return pstmt.executeUpdate();
 	}
+	
+	@Override
+	public int updateGrade(int requestID, int grade) throws SQLException {
+		Connection conn = ConnectionFactory.getInstance().getConnection();
+		String sql = "Update Request set grade = " + grade + " where REQUEST_ID = \'" +requestID +"\'";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		return pstmt.executeUpdate();
+	}
 
 	@Override
 	public List<Request> getAllidRequest(int id) {
