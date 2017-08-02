@@ -31,7 +31,7 @@ public class approveDenyServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
 		int id = Integer.parseInt(session.getAttribute("userIDKey").toString());
-		response.getWriter().write("Success: " + session.getAttribute("username") + " (" + session.getAttribute("userIDKey") + " | " + Integer.parseInt(request.getParameter("request")) +")");
+
 
 		int request_id = Integer.parseInt(request.getParameter("request"));
 		String action = request.getParameter("action");

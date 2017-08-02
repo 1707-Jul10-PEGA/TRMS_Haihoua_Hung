@@ -32,13 +32,14 @@ public class cancelServlet extends HttpServlet {
 		int id = Integer.parseInt(session.getAttribute("userIDKey").toString());
 		String action = request.getParameter("action");
 		int request_id = Integer.parseInt(request.getParameter("request").toString());
-		int grade = Integer.parseInt(request.getParameter("grade"));
+
 		RequestDaoImpl r_dao = new RequestDaoImpl();
 		try {
 			if(action.equalsIgnoreCase("cancel request")) {
 				r_dao.deleteRequest(request_id);
 			}
 			else {
+				int grade = Integer.parseInt(request.getParameter("grade"));
 				r_dao.updateGrade(request_id, grade);
 			}
 			

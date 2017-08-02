@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -118,8 +119,15 @@ public class RequestServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				response.getWriter().write(r.toString());
-				RequestDispatcher rd = request.getRequestDispatcher("viewRequest");
+				HttpSession session = request.getSession(true);
+				RequestDispatcher rd = null;
+				if(session.getAttribute("title").equals("Employee")){
+					rd = request.getRequestDispatcher("mainmenu.html");
+					}
+				else if(session.getAttribute("title").equals("Direct Supervisor"))
+				{
+					rd = request.getRequestDispatcher("mainmenuds.html");
+				}
 				rd.forward(request, response);
 	}
 
